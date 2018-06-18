@@ -1,0 +1,7 @@
+alert tcp any any ->  10.151.0.45 80 (msg:"Flood attempt using GET request!!!"; 
+flow:to_server,established; content:"GET"; 
+detection_filter:track by_src, count 60, seconds 30; )
+
+Alerting a tcp connection from any ipaddress and any port to my ip address for port 80(http) by giving a message 
+Flood attempt using GET request!!! and specifing the flow to_server and if the tcp session is established and if the more
+ than 60 packets is trasmitted in a time span of 30 Seconds from a particular source.
